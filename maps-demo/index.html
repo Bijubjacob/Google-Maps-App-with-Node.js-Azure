@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Maps Demo</title>
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Google Maps Demo</h1>
+  <div id="map"></div>
+
+  <script>
+    function initmap() {
+      // Define the map options correctly
+      var options = {
+        center: { lat: 42.0775, lng: -87.8230 }, // Lat/Lng must be numbers, not a string
+        zoom: 10
+      };
+
+      // Initialize the map correctly using "google.maps.Map" (case-sensitive)
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+    //   // Add a marker to the map
+    //   var marker = new google.maps.Marker({
+    //     position: options.center,
+    //     map: map,
+    //     icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+    //     title: 'Hello from Illinois!'
+    //   });
+
+    //     // Add an info window to the marker
+    //     var infoWindow = new google.maps.InfoWindow({
+    //       content: '<h3>Welcome to Illinois!</h3><p>This is a marker with an info window.</p>'
+    //     });
+
+    //     // Add a click event listener to the marker to open the info window
+    //     marker.addListener('click', function() {
+    //       infoWindow.open(map, marker);
+    //     });
+        // Add a marker to the map
+        addMarker({ lat: 42.0775, lng: -87.8230 });
+
+        
+        //Add functionality to change the marker icon on click
+        function addMarker(coords) {
+          var newMarker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png',
+            title: 'New Marker'
+          });
+          newMarker.addListener('click', function() {
+            infoWindow.open(map, newMarker);
+          });
+        }
+    }
+  </script>
+
+  <!-- Load the Google Maps API -->
+  <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH8LHW46hxUr4Hcviqx7C3DeeMw1wBxjo&callback=initmap">
+  </script>
+</body>
+</html>
