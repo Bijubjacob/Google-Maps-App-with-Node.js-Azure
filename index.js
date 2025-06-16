@@ -10,6 +10,7 @@ const minorVersion = 2
 
 // Use Express to publish static HTML, CSS, and JavaScript files that run in the browser. 
 app.use(express.static(__dirname + '/static'))
+app.use('/maps-demo', express.static(__dirname + '/maps-demo'))
 
 // The app.get functions below are being processed in Node.js running on the server.
 // Implement a custom About page.
