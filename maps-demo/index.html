@@ -34,6 +34,12 @@
     //     title: 'Hello from Illinois!'
     //   });
 
+    //Listen for clicks on the map
+    google.maps.event.addListener(map, 'click', function(event) {
+      // Get the coordinates of the click
+      addMarker(event.latLng);
+    });
+
     //     // Add an info window to the marker
     //     var infoWindow = new google.maps.InfoWindow({
     //       content: '<h3>Welcome to Illinois!</h3><p>This is a marker with an info window.</p>'
@@ -46,7 +52,7 @@
         // Add a marker to the map
         addMarker({ lat: 42.0775, lng: -87.8230 });
 
-        
+
         //Add functionality to change the marker icon on click
         function addMarker(coords) {
           var newMarker = new google.maps.Marker({
